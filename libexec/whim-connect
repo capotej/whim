@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Usage: whim connect [machine-name]
+# Summary: connect to machine
+
+set -e
+
+source $_WHIM_ROOT/lib/base.sh
+
+
+id=$(get machines $1)
+
+if [ ! -n $id ]; then
+  echo "machine $1 not found"
+  exit
+fi
+
+
+ip=$($EC2_HOME/bin/ec2-describe-instances | grep $id | grep -o '.*\.compute-1\.amazonaws\.com' | awk -F'\t' '{ print $4 }')
+
+ssh -i $KEYPAIR_FILE root@$ip
+
+
