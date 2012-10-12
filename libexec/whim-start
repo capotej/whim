@@ -19,4 +19,6 @@ instance_id=$($EC2_HOME/bin/ec2-run-instances $id -k $KEYPAIR_NAME  | awk -F'INS
 
 echo "$1 ($instance_id) started with $id"
 
+$EC2_HOME/bin/ec2addtag $instance_id --tag Name=$1
+
 put machines $1 $instance_id

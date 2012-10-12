@@ -16,3 +16,5 @@ fi
 echo "terminating $id..."
 
 $EC2_HOME/bin/ec2-terminate-instances $id
+
+del machines $1
