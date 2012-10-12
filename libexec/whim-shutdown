@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Usage: whim shutdown [machine-name]
+# Summary: shutdown a machine
+
+set -e
+
+source $_WHIM_ROOT/lib/base.sh
+
+id=$(get machines $1)
+
+if [ ! -n $id ]; then
+  echo "machine $1 not found"
+  exit
+fi
+
+echo "terminating $id..."
+
+$EC2_HOME/bin/ec2-terminate-instances $id
