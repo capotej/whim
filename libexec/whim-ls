@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Usage: sub ls
+# Summary: view all running instances
+
+set -e
+
+source $_WHIM_ROOT/lib/base.sh
+
+$EC2_HOME/bin/ec2-describe-instances

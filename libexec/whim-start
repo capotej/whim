@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Usage: whim start [machine-name] [image-name]
+# Summary: start a machine with a name and image
+
+set -e
+
+source $_WHIM_ROOT/lib/base.sh
+
+id=$(get images $2)
+
+if [ ! -n $id ]; then
+  echo "image $2 not found"
+  exit
+fi
+
+echo "starting $1 with $id"
+
+instance_id=$($EC2_HOME/bin/ec2-run-instances $id -k $KEYPAIR_NAME  | awk -F'INSTANCE' '{ print $2}' | awk -F"\t" '{ print $2 }' | tr -d "\n")
+
+echo "$1 ($instance_id) started with $id"
+
+put machines $1 $instance_id

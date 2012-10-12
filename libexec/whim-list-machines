@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Usage: whim list-machines
+# Summary: list all machines with their instance ids
+
+set -e
+
+source $_WHIM_ROOT/lib/base.sh
+
+list machines

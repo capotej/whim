@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Usage: whim register [image-name] [ami-id]
+# Summary: register an ami-id with a name
+
+set -e
+
+source $_WHIM_ROOT/lib/base.sh
+
+put images $1 $2

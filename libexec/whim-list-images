@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Usage: whim list-images
+# Summary: list all images with their names
+
+set -e
+
+source $_WHIM_ROOT/lib/base.sh
+
+list images

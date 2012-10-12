@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Usage: whim copy-config
+# Summary: copy an example config
+# Help: This will create an example config for editing at ~/.whimrc
+
+set -e
+
+echo "export AWS_ACCESS_KEY=12345"          >  ~/.whimrc
+echo "export AWS_SECRET_KEY=12345"          >> ~/.whimrc
+echo "export KEYPAIR_FILE=/path/to/key.pem" >> ~/.whimrc
+echo "export KEYPAIR_NAME=name_of_key"      >> ~/.whimrc

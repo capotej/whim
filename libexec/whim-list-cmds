@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Usage: whim list-cmds
+# Summary: list all ec2 commands
+
+set -e
+
+source $_WHIM_ROOT/lib/base.sh
+
+ls $EC2_HOME/bin/ | grep -v ".cmd"
