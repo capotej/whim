@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 # Usage: whim cmd [args]
 # Summary: run a raw ec2 command
-# Help: This will print out when you run `sub help who`.
-# You can have multiple lines even!
-#
-#    Show off an example indented
-#
-# And maybe start off another one?
+# Provide whim completions
 
 set -e
 
 source $_WHIM_ROOT/lib/base.sh
+
+if [ "$1" = "--complete" ]; then
+  ls -1 $EC2_HOME/bin/ | grep -v '.cmd'
+  exit
+fi
 
 $EC2_HOME/bin/$@

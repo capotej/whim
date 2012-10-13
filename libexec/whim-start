@@ -1,10 +1,16 @@
 #!/usr/bin/env bash
 # Usage: whim start [machine-name] [image-name]
 # Summary: start a machine with a name and image
+# Provide whim completions
 
 set -e
 
 source $_WHIM_ROOT/lib/base.sh
+
+if [ "$1" = "--complete" ]; then
+  list images | cut -d' ' -f1
+  exit
+fi
 
 id=$(get images $2)
 

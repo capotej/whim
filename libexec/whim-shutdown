@@ -1,10 +1,16 @@
 #!/usr/bin/env bash
 # Usage: whim shutdown [machine-name]
 # Summary: shutdown a machine
+# Provide whim completions
 
 set -e
 
 source $_WHIM_ROOT/lib/base.sh
+
+if [ "$1" = "--complete" ]; then
+  list machines | cut -f1 -d' '
+  exit
+fi
 
 id=$(get machines $1)
 
